@@ -16,7 +16,6 @@ const regionOf = (p) => REGION[p.region] || { label: p.region, color: '#888', jp
 function renderMap() {
   const sel = state.region ? REGION[state.region] : null;
   const shown = sel ? state.posts.filter((p) => p.region === sel.id) : state.posts;
-  const regionCount = new Set(state.posts.map((p) => p.region)).size;
   const cards = state.posts.reduce((s, p) => s + (p.images?.length || 0), 0);
 
   const paths = MAP_PATHS.map(([r, d]) => {
@@ -55,7 +54,6 @@ function renderMap() {
       <dl class="stats">
         <div><dt>게시물</dt><dd>${state.posts.length}<small>편</small></dd></div>
         <div><dt>카드</dt><dd>${cards}<small>장</small></dd></div>
-        <div><dt>다녀온 지역</dt><dd>${regionCount}<small>곳</small></dd></div>
       </dl>
     </section>
     <section class="explore" aria-label="지도에서 지역 고르기">
