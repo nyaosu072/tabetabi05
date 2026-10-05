@@ -5,6 +5,12 @@ const logoutBtn = document.getElementById('logout');
 let sb = null;
 let session = null;
 
+// 메뉴: 로그인 전에는 '사이트 보기'만, 관리자로 로그인하면 관리 메뉴와 로그아웃
+function setNav({ loggedIn, admin }) {
+  document.querySelectorAll('[data-admin]').forEach((a) => { a.hidden = !admin; });
+  logoutBtn.hidden = !loggedIn;
+}
+
 const say = (text, err) => `<div class="msg${err ? ' err' : ''}" role="${err ? 'alert' : 'status'}">${esc(text)}</div>`;
 
 // datetime-local 값 <-> ISO (브라우저 시간대 기준)
@@ -24,7 +30,7 @@ function statusBadge(p) {
 
 // ---------- 로그인 ----------
 function renderLogin(message) {
-  logoutBtn.hidden = true;
+  setNav({ loggedIn: false, admin: false });
   app.innerHTML = `
     <section class="admin">
       <h1>관리자 로그인</h1>
@@ -200,8 +206,9 @@ async function renderForm(id) {
 // ---------- 시작 ----------
 async function route() {
   if (!session) return renderLogin();
-  logoutBtn.hidden = false;
-  if (!(await isAdmin())) {
+  const admin = await isAdmin();
+  setNav({ loggedIn: true, admin });
+  if (!admin) {
     app.innerHTML = `<section class="admin"><h1>권한이 없어요</h1>${say(`${session.user.email} 계정은 관리자로 등록돼 있지 않아요. 사이트 운영자에게 요청해 주세요.`, true)}</section>`;
     return;
   }

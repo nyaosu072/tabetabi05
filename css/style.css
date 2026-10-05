@@ -12,6 +12,7 @@
   --danger: #a3311f;
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Noto Sans KR', sans-serif; word-break: keep-all; }
 a { color: var(--accent); }
 a:hover { color: #2c5222; }
