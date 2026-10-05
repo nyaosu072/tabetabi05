@@ -39,7 +39,6 @@ function renderLogin(message) {
         <div class="field"><label for="email">이메일</label><input id="email" type="email" autocomplete="username" required></div>
         <div class="field"><label for="pw">비밀번호</label><input id="pw" type="password" autocomplete="current-password" required></div>
         <button class="btn solid" type="submit">로그인</button>
-        <p class="hint" style="margin:0;color:var(--muted);font-size:14px">관리자 계정은 사이트 운영자가 Supabase에서 만들어 줘요.</p>
       </form>
     </section>`;
   document.getElementById('login').addEventListener('submit', async (e) => {
