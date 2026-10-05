@@ -2,7 +2,7 @@ import { REGIONS, REGION, loadPosts, esc, fmtDate } from './data.js';
 import { MAP_PATHS } from './japan-map.js';
 
 const app = document.getElementById('app');
-const state = { posts: [], region: null, boardRegion: 'all', card: 0, from: 'map', stamped: false };
+const state = { posts: [], region: null, boardRegion: 'all', card: 0, from: 'map' };
 
 const icon = {
   left: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>',
@@ -13,9 +13,7 @@ const countOf = (id) => state.posts.filter((p) => p.region === id).length;
 const regionOf = (p) => REGION[p.region] || { label: p.region, color: '#888', jp: '' };
 
 // ---------- 지도 홈 ----------
-// 첫 화면 전체가 지도. 도장을 누르면 그 지역 게시물 서랍이 열린다 (넓은 화면은 왼쪽, 휴대폰은 아래).
-// 도장마다 조금씩 다른 각도로 찍힌다 (REGIONS 순서)
-const TILT = [-6, 4, -3, 7, -5, 3, -7, 5, -2];
+// 첫 화면 전체가 지도. 지역 이름표를 누르면 그 지역 게시물 서랍이 열린다 (넓은 화면은 왼쪽, 휴대폰은 아래).
 
 const rowHTML = (p) => `
   <li><a class="post-row" href="#/post/${esc(p.id)}" style="--rc:${regionOf(p).color}">
@@ -29,19 +27,15 @@ const rowHTML = (p) => `
 
 function renderMap() {
   const visited = REGIONS.filter((r) => countOf(r.id) > 0).length;
-  const firstTime = !state.stamped;
-  state.stamped = true;
 
   const paths = MAP_PATHS.map(([r, d]) => `<path data-region="${r}" d="${d}" stroke="var(--sea)" stroke-width="0.9" stroke-linejoin="round"><title>${REGION[r].label}</title></path>`).join('');
 
-  let order = 0;
-  const stamps = REGIONS.map((r, i) => {
+  const labels = REGIONS.map((r) => {
     const n = countOf(r.id);
-    const delay = n && firstTime ? ` animation-delay:${0.3 + 0.12 * order++}s` : '';
-    return `<button class="stamp${n ? ' on' : ''}${n && firstTime ? ' press' : ''}" data-region="${r.id}" aria-pressed="false" aria-controls="drawer"
+    return `<button class="tag${n ? ' on' : ''}" data-region="${r.id}" aria-pressed="false" aria-controls="drawer"
       aria-label="${r.label} ${n ? `게시물 ${n}편` : '아직 게시물 없음'}"
-      style="left:${r.x}%;top:${r.y}%;--c:${r.color};--tilt:${TILT[i]}deg;${delay}">
-      <span class="jp" aria-hidden="true">${r.jp}</span><b>${r.label}</b>${n ? `<small>${n}편</small>` : ''}</button>`;
+      style="left:${r.x}%;top:${r.y}%;--c:${r.color}">
+      <b>${r.label}</b><span class="jp" aria-hidden="true">${r.jp}</span>${n ? `<small>${n}</small>` : ''}</button>`;
   }).join('');
 
   const shelf = state.posts.map((p) => `
@@ -57,14 +51,14 @@ function renderMap() {
       <div class="stage-in wrap">
         <div class="intro">
           <h1>지도로 고르는<br>일본 지역 음식</h1>
-          <p>9개 지역 중 <b>${visited}곳</b>에 도장을 찍었어요. 색이 찍힌 도장을 누르면 그 지역 음식 카드뉴스가 나와요.</p>
+          <p>지금까지 9개 지역 중 <b>${visited}곳</b>의 음식을 소개했어요. 색이 칠해진 지역을 누르면 그곳 음식 카드뉴스가 나와요.</p>
         </div>
         <div class="map">
-          <svg viewBox="0 0 640 640" role="img" aria-label="일본 지도. 지역 도장 버튼으로 고를 수 있어요">
+          <svg viewBox="0 0 640 640" role="img" aria-label="일본 지도. 지역 이름 버튼으로 고를 수 있어요">
             <rect x="20" y="26" width="244" height="194" rx="10" fill="none" stroke="var(--rule)" stroke-width="1.2" stroke-dasharray="4 5"/>
             ${paths}
           </svg>
-          ${stamps}
+          ${labels}
         </div>
         <aside id="drawer" class="drawer" aria-label="지역 게시물" hidden></aside>
       </div>
@@ -76,7 +70,7 @@ function renderMap() {
       </div>
       <ul class="covers">${shelf}
         <li class="cover-next">
-          <p><b>다음 도장은 어디일까요</b>새 게시물은 인스타그램에 먼저 올라와요.</p>
+          <p><b>다음은 어느 지역일까요</b>새 게시물은 인스타그램에 먼저 올라와요.</p>
           <a class="btn" href="https://www.instagram.com/tabetabi05/">인스타그램 팔로우하기</a>
         </li>
       </ul>
@@ -97,7 +91,7 @@ function paintMap() {
     el.setAttribute('fill', has ? REGION[r].color : 'var(--land)');
     el.setAttribute('fill-opacity', state.region ? (state.region === r ? 0.8 : has ? 0.2 : 1) : has ? 0.4 : 1);
   });
-  app.querySelectorAll('.stamp').forEach((el) => el.setAttribute('aria-pressed', String(el.dataset.region === state.region)));
+  app.querySelectorAll('.map .tag').forEach((el) => el.setAttribute('aria-pressed', String(el.dataset.region === state.region)));
 }
 
 function selectRegion(r, { instant = false } = {}) {
@@ -122,11 +116,11 @@ function selectRegion(r, { instant = false } = {}) {
     ${shown.length
       ? `<p class="drawer-sub">게시물 ${shown.length}편</p><ul class="post-list">${shown.map(rowHTML).join('')}</ul>
          <button class="more" data-act="board">게시판에서 ${esc(sel.label)}만 보기</button>`
-      : `<div class="empty"><b>${esc(sel.label)} 도장은 아직 비어 있어요</b><p>색이 찍힌 도장을 누르면 다녀온 지역 음식을 볼 수 있어요.</p></div>`}`;
+      : `<div class="empty"><b>${esc(sel.label)} 편은 아직 준비 중이에요</b><p>색이 칠해진 지역을 누르면 지금까지 소개한 음식을 볼 수 있어요.</p></div>`}`;
   drawer.hidden = false;
   drawer.querySelector('[data-act="close"]').addEventListener('click', () => {
     selectRegion(null);
-    app.querySelector(`.stamp[data-region="${r}"]`)?.focus({ preventScroll: true });
+    app.querySelector(`.map .tag[data-region="${r}"]`)?.focus({ preventScroll: true });
   });
   drawer.querySelector('[data-act="board"]')?.addEventListener('click', () => { state.boardRegion = r; location.hash = '#/board'; });
   if (instant) { stage.classList.add('open'); return; }
@@ -138,7 +132,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && state.region && app.querySelector('#drawer')) {
     const r = state.region;
     selectRegion(null);
-    app.querySelector(`.stamp[data-region="${r}"]`)?.focus({ preventScroll: true });
+    app.querySelector(`.map .tag[data-region="${r}"]`)?.focus({ preventScroll: true });
   }
 });
 

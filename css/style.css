@@ -1,9 +1,9 @@
-/* 타베타비 — 역 스탬프 랠리 수첩. 디자인 메모: site/DESIGN.md
-   대담한 건 지도 위 도장 하나, 나머지는 수첩처럼 조용하게. */
+/* 타베타비 — 화면 가득한 일본 지도 + 지역색. 디자인 메모: site/DESIGN.md
+   대담한 건 첫 화면의 큰 지도 하나, 나머지는 조용하게. */
 :root {
-  --paper: #f2f3ee;      /* 수첩 종이 */
+  --paper: #f2f3ee;      /* 종이 */
   --sheet: #ffffff;      /* 역 이름판, 입력칸 */
-  --ink: #20305c;        /* 스탬프 잉크 */
+  --ink: #20305c;        /* 남색 잉크 */
   --pencil: #626a7e;     /* 보조 글자 */
   --rule: #cdd1d9;       /* 괘선 */
   --land: #e1e2d8;
@@ -36,9 +36,9 @@ h1, h2 { font-weight: 400; }
 /* ---------- 머리말 ---------- */
 .site-head { border-bottom: 2px solid var(--ink); }
 .site-head .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-top: 14px; padding-bottom: 14px; }
-.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo-stamp { width: 42px; height: 42px; flex: none; display: grid; place-items: center; border-radius: 50%; border: 2px solid var(--ink); box-shadow: inset 0 0 0 3px var(--paper), inset 0 0 0 4.5px var(--ink); font-size: 18px; font-weight: 700; transform: rotate(-8deg); }
-.logo b { font-family: var(--display); font-weight: 400; font-size: 24px; letter-spacing: .01em; }
+.logo { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
+.logo .jp { font-size: 14px; font-weight: 700; color: var(--pencil); letter-spacing: .08em; }
+.logo b { font-family: var(--display); font-weight: 400; font-size: 28px; letter-spacing: .01em; }
 .site-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0 22px; font-size: 15px; font-weight: 700; }
 .site-nav a { text-decoration: none; padding: 10px 0; border-bottom: 2px solid transparent; }
 .site-nav a:hover { border-bottom-color: var(--rule); }
@@ -56,7 +56,6 @@ h1, h2 { font-weight: 400; }
 .btn.solid:hover { background: #2b3f75; }
 .btn.link { border: 0; padding: 0 2px; min-height: 40px; background: none; text-decoration: underline; text-underline-offset: 4px; }
 .btn.danger { border-color: var(--danger); color: var(--danger); }
-/* 빈 도장 칸처럼 */
 .empty { padding: 32px 28px; border: 1.5px dashed var(--rule); border-radius: 16px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
 .empty b { font-size: 18px; }
 .empty p { margin: 0; color: var(--pencil); }
@@ -93,29 +92,18 @@ h1, h2 { font-weight: 400; }
 .drawer .empty { margin: 8px 24px 24px; }
 .drawer .more { align-self: flex-start; margin: 8px 24px 24px; padding: 10px 0; border: 0; background: none; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
 
-/* 도장: 게시물이 있는 지역은 지역색 잉크로 찍혀 있고, 없는 지역은 점선 빈칸 */
-.stamp { --size: 84px; position: absolute; width: var(--size); height: var(--size); padding: 0; border-radius: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; line-height: 1.1; border: 1.5px dashed #a3abb9; background: rgba(242, 243, 238, .88); color: var(--pencil); transition: transform .18s, border-color .18s; }
-.stamp .jp { font-size: 11px; font-weight: 700; opacity: .75; }
-.stamp b { font-size: 13px; font-weight: 800; }
-.stamp small { font-size: 11px; font-weight: 700; }
-.stamp:hover { border-color: var(--ink); color: var(--ink); }
-.stamp.on { --size: 100px; transform: translate(-50%, -50%) rotate(var(--tilt)); border: 0; background: var(--c); color: #fff; box-shadow: inset 0 0 0 3px var(--c), inset 0 0 0 5px rgba(255, 255, 255, .9);
-  /* 잉크가 고르지 않게 묻은 느낌 */
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3.2 0 0 0 2.75'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3.2 0 0 0 2.75'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-.stamp.on .jp { opacity: 1; font-size: 12px; }
-.stamp.on b { font-size: 16px; }
-.stamp.on small { font-size: 12px; }
-.stamp.on:hover { transform: translate(-50%, -50%) rotate(0deg); }
-.stamp[aria-pressed="true"] { border: 2px solid var(--ink); color: var(--ink); background: var(--sheet); }
-.stamp.on[aria-pressed="true"] { border: 0; color: #fff; background: var(--c); box-shadow: inset 0 0 0 3px var(--c), inset 0 0 0 5px #fff, 0 0 0 4px var(--sea), 0 0 0 6.5px var(--ink); -webkit-mask: none; mask: none; }
-/* 처음 열 때 한 번, 다녀온 지역 도장이 차례로 찍힌다 */
-.stamp.press { animation: press .42s cubic-bezier(.3, 1.6, .5, 1) both; }
-@keyframes press {
-  0% { opacity: 0; transform: translate(-50%, -50%) rotate(calc(var(--tilt) - 14deg)) scale(1.7); }
-  60% { opacity: 1; }
-  100% { opacity: 1; transform: translate(-50%, -50%) rotate(var(--tilt)) scale(1); }
-}
+/* 지역 이름표: 소개한 지역은 지역색으로 칠하고, 아직인 지역은 흰 바탕 */
+.map .tag { position: absolute; transform: translate(-50%, -50%); min-height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--rule); background: rgba(255, 255, 255, .92); color: var(--pencil); display: flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 14px; line-height: 1; transition: background .15s, border-color .15s, color .15s; }
+.map .tag b { font-weight: 700; }
+.map .tag .jp { font-size: 12px; font-weight: 500; opacity: .7; }
+.map .tag small { min-width: 22px; height: 22px; padding: 0 6px; margin-right: -6px; border-radius: 999px; background: #fff; color: var(--c); font-size: 12px; font-weight: 800; display: grid; place-items: center; }
+.map .tag:hover { border-color: var(--ink); color: var(--ink); }
+.map .tag.on { --h: 48px; min-height: var(--h); padding: 0 16px 0 18px; border-color: var(--c); background: var(--c); color: #fff; font-size: 16px; box-shadow: 0 8px 20px -10px var(--c); }
+.map .tag.on b { font-weight: 800; }
+.map .tag.on .jp { opacity: .85; font-size: 13px; }
+.map .tag.on:hover { color: #fff; filter: brightness(1.08); }
+.map .tag[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); background: #fff; box-shadow: 0 0 0 2px var(--ink); }
+.map .tag.on[aria-pressed="true"] { color: #fff; background: var(--c); box-shadow: 0 0 0 3px var(--sea), 0 0 0 5px var(--ink); }
 
 /* 좁은 화면: 글 → 지도 순서로 쌓고, 서랍은 아래에서 올라온다 */
 @media (max-width: 900px) {
@@ -132,16 +120,13 @@ h1, h2 { font-weight: 400; }
   .drawer .more { margin-left: 20px; margin-bottom: max(20px, env(safe-area-inset-bottom)); }
 }
 @media (max-width: 600px) {
-  .stamp { --size: 48px; }
-  .stamp.on { --size: 60px; }
-  .stamp .jp { display: none; }
-  .stamp b { font-size: 10.5px; }
-  .stamp.on b { font-size: 12px; }
-  .stamp small, .stamp.on small { font-size: 10px; }
+  .map .tag { min-height: 28px; padding: 0 9px; font-size: 11px; gap: 4px; }
+  .map .tag.on { --h: 32px; padding: 0 10px 0 11px; font-size: 12px; }
+  .map .tag .jp { display: none; }
+  .map .tag small { min-width: 18px; height: 18px; font-size: 10.5px; margin-right: -5px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .stamp.press { animation: none; }
-  .stamp, .map path, .drawer, .intro { transition: none; }
+  .map .tag, .map path, .drawer, .intro { transition: none; }
 }
 
 /* 서랍·목록 공통 게시물 줄 */
@@ -169,7 +154,7 @@ h1, h2 { font-weight: 400; }
 .cover b { font-size: 18px; font-weight: 800; line-height: 1.4; }
 .cover:hover b { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
 .cover small { font-size: 14px; color: var(--pencil); display: flex; flex-wrap: wrap; gap: 0 12px; }
-/* 다음 도장 자리: 빈 도장 칸처럼 점선 */
+/* 다음 게시물 자리: 점선 빈칸 */
 .cover-next { aspect-ratio: 4 / 5; border: 1.5px dashed #a3abb9; border-radius: 8px; padding: 24px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 14px; }
 .cover-next p { margin: 0; color: var(--pencil); font-size: 15px; }
 .cover-next p b { display: block; margin-bottom: 4px; color: var(--ink); font-family: var(--display); font-weight: 400; font-size: 24px; line-height: 1.2; }
