@@ -22,7 +22,7 @@ function renderMap() {
     const reg = REGION[r];
     const fill = countOf(r) > 0 ? reg.color : 'var(--land)';
     const op = sel && sel.id !== r ? 0.35 : 1;
-    return `<path data-region="${r}" d="${d}" fill="${fill}" fill-opacity="${op}" stroke="#f7f1e6" stroke-width="0.8" stroke-linejoin="round"><title>${reg.label}</title></path>`;
+    return `<path data-region="${r}" d="${d}" fill="${fill}" fill-opacity="${op}" stroke="var(--paper)" stroke-width="0.8" stroke-linejoin="round"><title>${reg.label}</title></path>`;
   }).join('');
 
   const pins = REGIONS.map((r) => {
@@ -32,9 +32,10 @@ function renderMap() {
 
   const list = shown.length
     ? `<ul class="post-list">${shown.map((p) => `
-        <li><a class="post-row" href="#/post/${esc(p.id)}">
+        <li><a class="post-row" href="#/post/${esc(p.id)}" style="--rc:${regionOf(p).color}">
           <img src="${esc(p.images?.[0] || '')}" alt="" loading="lazy">
           <span class="t">
+            <span class="no">No.${esc(p.id)}</span>
             <span class="jp" style="color:${regionOf(p).color}">${esc(p.eyebrow)}</span>
             <b>${esc(p.title)}</b>
             <small>${esc(p.food)} · ${fmtDate(p.published_at)} · 카드 ${p.images?.length || 0}장</small>
@@ -46,20 +47,22 @@ function renderMap() {
 
   app.innerHTML = `
     <section class="hero">
+      <div class="hero-v jp" aria-hidden="true">日本各地の郷土の味</div>
       <div>
-        <div class="eyebrow">日本各地の郷土の味</div>
-        <h1>지도를 눌러<br>그 지역 음식을 만나 보세요</h1>
+        <div class="eyebrow">日本各地の郷土の味 · 地図から旅する</div>
+        <h1>지도를 눌러<br>그 지역 <em>음식</em>을 만나 보세요</h1>
         <p>인스타그램 @tabetabi05에 올린 카드뉴스를 일본 지도 위에 모았어요. 지역을 누르면 그곳 음식 게시물이 나와요.</p>
       </div>
       <dl class="stats">
-        <div><dt>게시물</dt><dd>${state.posts.length}<small>편</small></dd></div>
-        <div><dt>카드</dt><dd>${cards}<small>장</small></dd></div>
+        <div><dt>게시물 <span class="jp">投稿</span></dt><dd>${state.posts.length}<small>편</small></dd></div>
+        <div><dt>카드 <span class="jp">枚数</span></dt><dd>${cards}<small>장</small></dd></div>
       </dl>
     </section>
     <section class="explore" aria-label="지도에서 지역 고르기">
       <div class="map">
+        <span class="map-tag jp" aria-hidden="true">日本 · JAPAN</span>
         <svg viewBox="0 0 640 640" role="img" aria-label="일본 지도. 아래 지역 버튼으로도 고를 수 있어요">
-          <rect x="20" y="26" width="244" height="194" fill="none" stroke="#a9bdb6" stroke-width="1.5" stroke-dasharray="5 5"/>
+          <rect x="20" y="26" width="244" height="194" fill="none" stroke="var(--sea-line)" stroke-width="1.2" stroke-dasharray="4 4"/>
           ${paths}
         </svg>
         ${pins}
@@ -105,8 +108,8 @@ function renderBoard() {
             <th style="width:150px">지역</th><th style="width:120px">게시일</th><th class="num" style="width:64px">카드</th>
           </tr></thead>
           <tbody>${rows.map((p) => `
-            <tr>
-              <td><b>${esc(p.id)}</b></td>
+            <tr style="--rc:${regionOf(p).color}">
+              <td><b class="no">${esc(p.id)}</b></td>
               <td><img class="thumb" src="${esc(p.images?.[0] || '')}" alt="" loading="lazy"></td>
               <td><a class="title" href="#/post/${esc(p.id)}">${esc(p.title)}</a><small>${esc(p.food)} <span class="jp">${esc(p.food_jp)}</span></small></td>
               <td><span class="meta" style="color:var(--ink)"><span class="dot" style="background:${regionOf(p).color}"></span>${esc(regionOf(p).label)}</span><small>${esc(p.place)}</small></td>
