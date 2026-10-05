@@ -1,5 +1,35 @@
 [
     {
+        "id":  "004",
+        "slug":  "004-hirosaki-apple-pie",
+        "food":  "히로사키 애플파이",
+        "food_jp":  "弘前アップルパイ",
+        "place":  "아오모리현 히로사키시",
+        "region":  "tohoku",
+        "eyebrow":  "青森・弘前",
+        "title":  "사과왕국 아오모리, 애플파이 맛집 4곳",
+        "caption":  "사과왕국 아오모리의 히로사키에서 애플파이 먹을 곳, 정해 두셨어요?\n\n도와다 바라야키에 이어 아오모리 두 번째, 이번엔 사과의 도시 히로사키예요.\n히로사키에는 관광 안내소 직원들이 직접 먹어 보고 만든 애플파이 지도(弘前アップルパイガイドマップ)가 있어요. 이번 카드의 파이 사진도 이 지도에 실린 사진이에요.\n\n- 다이쇼 로망 깃사시쓰 @taishoroman__ : 정원 속 양관에서 시내 명점 파이를 골라 먹는 곳\n- 카페 \u0026 레스토랑 브릭 @hirosaki.brick : 벽돌 창고 미술관의 사과 모양 파이\n- 살롱 드 카페 앙쥬: 프렌치 레스토랑 シェ・アンジュ(@chez.ange_patchparis)가 프로듀스한 카페, 전국 방송에 여러 번 나온 파이\n- 타무라 팜 @tamurafarm.aomori : 사과 농원이 굽는 홍옥 파이, 사 가는 곳\n\n한 곳에서 다 먹기보다 두세 곳을 돌며 한 조각씩 비교해 보는 게 히로사키다운 방법 같아요.\n애플파이 좋아하는 친구, 히로사키 같이 갈 사람한테 보내 주세요.\n\n사진 출처\n01 Minoruoonaka (CC BY-SA 3.0, 편집) / 02 掬茶 (CC BY-SA 4.0, 편집) — Wikimedia Commons\n03~06 © 弘前観光コンベンション協会「弘前アップルパイガイドマップ」\n01·02번 카드는 CC BY-SA 4.0으로 공개",
+        "tags":  [
+                     "#아오모리여행",
+                     "#애플파이",
+                     "#일본디저트",
+                     "#일본소도시여행",
+                     "#일본여행"
+                 ],
+        "credit":  "",
+        "images":  [
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/004-hirosaki-apple-pie/01.png",
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/004-hirosaki-apple-pie/02.png",
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/004-hirosaki-apple-pie/03.png",
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/004-hirosaki-apple-pie/04.png",
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/004-hirosaki-apple-pie/05.png",
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/004-hirosaki-apple-pie/06.png",
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/004-hirosaki-apple-pie/07.png"
+                   ],
+        "published_at":  "2026-10-06T14:00:00+09:00",
+        "status":  "published"
+    },
+    {
         "id":  "003",
         "slug":  "003-towada-barayaki",
         "food":  "도와다 바라야키",
