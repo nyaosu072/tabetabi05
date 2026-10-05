@@ -60,8 +60,6 @@ function renderMap() {
       <div class="map">
         <svg viewBox="0 0 640 640" role="img" aria-label="일본 지도. 아래 지역 버튼으로도 고를 수 있어요">
           <rect x="20" y="26" width="244" height="194" fill="none" stroke="#a9bdb6" stroke-width="1.5" stroke-dasharray="5 5"/>
-          <text x="250" y="320" font-family="Noto Serif JP, serif" font-size="20" fill="#8fa8a0" letter-spacing="6">日本海</text>
-          <text x="470" y="570" font-family="Noto Serif JP, serif" font-size="20" fill="#8fa8a0" letter-spacing="6">太平洋</text>
           ${paths}
         </svg>
         ${pins}
