@@ -1,0 +1,101 @@
+[
+    {
+        "id":  "003",
+        "slug":  "003-towada-barayaki",
+        "food":  "도와다 바라야키",
+        "food_jp":  "十和田バラ焼き",
+        "place":  "아오모리현 도와다시",
+        "region":  "tohoku",
+        "eyebrow":  "青森・十和田",
+        "title":  "양파 듬뿍, 아오모리판 불고기?",
+        "caption":  "철판에 양파를 깔고 고기로 탑을 쌓는 아오모리 도와다의 바라야키, 본 적 있으세요?\n\n센다이 두 편에 이어, 이번엔 더 북쪽 아오모리현 도와다로 가요.\n도와다에는 바라야키로 마을 살리기에 나선 시민단체 \u0027도와다 바라야키 제미나르\u0027가 있는데, 2014년 B-1 그랑프리에서 1위(골드 그랑프리)를 했어요.\n회원들은 \u0027바라족\u0027이라 불리고, 장미도 일본어로 \u0027바라\u0027라서 장미와 『베르사유의 장미』를 홍보에 쓴대요.\n이 단체의 안테나숍 \u0027쓰카사 바라야키 다이슈쇼쿠도(司バラ焼き大衆食堂)\u0027는 도와다 시내 중심가에 있고, JR 하치노헤역에서 버스로 갈 수 있어요.\n이 가게에는 여럿이 갈수록 고기 탑이 높아지는 \u0027타워 굽기\u0027 체험도 있대요. 혼자보다 여럿이 가야 할 이유가 생겼네요.\n\n도와다나 아오모리 여행을 계획 중이라면 저장해 두세요.",
+        "tags":  [
+                     "#아오모리여행",
+                     "#바라야키",
+                     "#일본향토음식",
+                     "#일본소도시여행",
+                     "#일본여행"
+                 ],
+        "credit":  "사진: inunami / Wikimedia Commons (CC BY 2.0) (편집)\n영상: 青森県 / あおもり映像素材ライブラリー (편집)",
+        "images":  [
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/003-towada-barayaki/01.png",
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/003-towada-barayaki/02.png",
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/003-towada-barayaki/03.png",
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/003-towada-barayaki/04.png"
+                   ],
+        "published_at":  "2026-10-05T12:00:00+09:00",
+        "status":  "published"
+    },
+    {
+        "id":  "002",
+        "slug":  "002-seri-nabe",
+        "food":  "세리나베",
+        "food_jp":  "せり鍋",
+        "place":  "미야기현 센다이",
+        "region":  "tohoku",
+        "eyebrow":  "宮城・仙台",
+        "title":  "미나리를 뿌리까지 먹는다고요?",
+        "caption":  "미나리를 뿌리까지 통째로 넣는 센다이 향토요리\n\n지난 편 즌다모찌에 이어 이번에도 센다이 이야기예요.\n세리나베에 들어가는 미나리는 \u0027仙台せり(센다이 세리)\u0027라는 이름으로 2024년 3월 일본 농림수산성 지리적표시(GI)에 등록됐어요.\n산지는 나토리시와 센다이시 다이하쿠구인데, 미야기현에서 나는 미나리의 약 8할이 나토리시에서 나온대요.\n에도 시대에 나토리강 근처 습지에 자라던 미나리를 개량해 키운 것이 시작이라고 해요.\n미나리 농가에서는 유기농으로 키웠더니 뿌리가 가장 맛있어졌다고 이야기한대요. 그 말을 듣고 나니 뿌리 맛이 제일 궁금해지네요.\n\n센다이 겨울 여행 계획이 있다면 저장해 두세요.",
+        "tags":  [
+                     "#센다이여행",
+                     "#세리나베",
+                     "#일본향토음식",
+                     "#일본소도시여행",
+                     "#일본여행"
+                 ],
+        "credit":  "사진: Hanabishi / Wikimedia Commons (CC0)",
+        "images":  [
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/002-seri-nabe/01.png",
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/002-seri-nabe/02.png",
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/002-seri-nabe/03.png",
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/002-seri-nabe/04.png"
+                   ],
+        "published_at":  "2026-10-05T11:32:00+09:00",
+        "status":  "published"
+    },
+    {
+        "id":  "001",
+        "slug":  "001-zunda-mochi",
+        "food":  "즌다모찌",
+        "food_jp":  "ずんだ餅",
+        "place":  "미야기현 센다이",
+        "region":  "tohoku",
+        "eyebrow":  "宮城・仙台",
+        "title":  "초록색 떡의 정체는?",
+        "caption":  "센다이 명물 초록 떡의 정체는?\n\n즌다는 오본뿐 아니라 오히간 때도 공양하고 손님에게 내던 음식이었대요.\n\n까먹기 전에 저장하기!",
+        "tags":  [
+                     "#일본여행",
+                     "#일본음식",
+                     "#일본디저트",
+                     "#일본맛집",
+                     "#카드뉴스",
+                     "#센다이여행",
+                     "#센다이맛집",
+                     "#센다이",
+                     "#센다이디저트",
+                     "#미야기여행",
+                     "#미야기맛집",
+                     "#도호쿠여행",
+                     "#동북여행",
+                     "#일본소도시여행",
+                     "#즌다모찌",
+                     "#즌다",
+                     "#ずんだ餅",
+                     "#ずんだ",
+                     "#仙台",
+                     "#zundamochi",
+                     "#zunda",
+                     "#에다마메"
+                 ],
+        "credit":  "사진: 1·4번째 Σ64 (CC BY 4.0, 편집), 2번째 Fumikas Sagisavas (CC0) / Wikimedia Commons",
+        "images":  [
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/001-zunda-mochi/01.png",
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/001-zunda-mochi/02.png",
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/001-zunda-mochi/03.png",
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/001-zunda-mochi/04.png",
+                       "https://raw.githubusercontent.com/nyaosu072/tabetabi-images/main/001-zunda-mochi/05.png"
+                   ],
+        "published_at":  "2026-10-04T23:56:00+09:00",
+        "status":  "published"
+    }
+]
