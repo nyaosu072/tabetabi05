@@ -51,7 +51,7 @@ function renderMap() {
       <div class="stage-in wrap">
         <div class="intro">
           <h1>지도로 고르는<br>일본 지역 음식</h1>
-          <p>지금까지 9개 지역 중 <b>${visited}곳</b>의 음식을 소개했어요. 색이 칠해진 지역을 누르면 그곳 음식 카드뉴스가 나와요.</p>
+          <p>지금까지 9개 지역 중 <b>${visited}곳</b>의 음식을 소개했어요. 지역을 누르면 그곳 음식 카드뉴스가 나와요.</p>
         </div>
         <div class="map">
           <svg viewBox="0 0 640 640" role="img" aria-label="일본 지도. 지역 이름 버튼으로 고를 수 있어요">
@@ -91,12 +91,11 @@ function renderMap() {
 function paintMap() {
   app.querySelectorAll('.map path').forEach((el) => {
     const r = el.dataset.region;
-    const has = countOf(r) > 0;
     const picked = state.region === r;
-    // 고른 지역은 게시물이 없어도 지역색으로 칠한다
+    // 평소에는 모든 지역이 무색, 마우스를 올리거나 고른 지역만 지역색
     el.style.setProperty('--c', REGION[r].color);
-    el.setAttribute('fill', has || picked ? REGION[r].color : 'var(--land)');
-    el.setAttribute('fill-opacity', picked ? 0.85 : state.region ? (has ? 0.2 : 1) : has ? 0.4 : 1);
+    el.setAttribute('fill', picked ? REGION[r].color : 'var(--land)');
+    el.setAttribute('fill-opacity', picked ? 0.85 : 1);
     el.classList.toggle('picked', picked);
   });
   app.querySelectorAll('.map .tag').forEach((el) => el.setAttribute('aria-pressed', String(el.dataset.region === state.region)));
@@ -124,7 +123,7 @@ function selectRegion(r, { instant = false } = {}) {
     ${shown.length
       ? `<p class="drawer-sub">게시물 ${shown.length}편</p><ul class="post-list">${shown.map(rowHTML).join('')}</ul>
          <button class="more" data-act="board">게시판에서 ${esc(sel.label)}만 보기</button>`
-      : `<div class="empty"><b>${esc(sel.label)} 편은 아직 준비 중이에요</b><p>색이 칠해진 지역을 누르면 지금까지 소개한 음식을 볼 수 있어요.</p></div>`}`;
+      : `<div class="empty"><b>${esc(sel.label)} 편은 아직 준비 중이에요</b><p>편수가 붙은 이름표를 누르면 지금까지 소개한 음식을 볼 수 있어요.</p></div>`}`;
   drawer.hidden = false;
   drawer.querySelector('[data-act="close"]').addEventListener('click', () => {
     selectRegion(null);
