@@ -76,9 +76,13 @@ function renderMap() {
       </ul>
     </section>`;
 
-  app.querySelectorAll('.map [data-region]').forEach((el) => el.addEventListener('click', () => {
-    selectRegion(state.region === el.dataset.region ? null : el.dataset.region);
-  }));
+  app.querySelectorAll('.map [data-region]').forEach((el) => {
+    el.addEventListener('click', () => selectRegion(state.region === el.dataset.region ? null : el.dataset.region));
+    // 지역(도도부현 여러 개)이나 이름표에 마우스를 올리면 그 지역 전체가 지역색으로 비친다
+    const hover = (on) => app.querySelectorAll(`.map path[data-region="${el.dataset.region}"]`).forEach((p) => p.classList.toggle('hover', on));
+    el.addEventListener('mouseenter', () => hover(true));
+    el.addEventListener('mouseleave', () => hover(false));
+  });
   paintMap();
   if (state.region) selectRegion(state.region, { instant: true });
 }
@@ -88,8 +92,12 @@ function paintMap() {
   app.querySelectorAll('.map path').forEach((el) => {
     const r = el.dataset.region;
     const has = countOf(r) > 0;
-    el.setAttribute('fill', has ? REGION[r].color : 'var(--land)');
-    el.setAttribute('fill-opacity', state.region ? (state.region === r ? 0.8 : has ? 0.2 : 1) : has ? 0.4 : 1);
+    const picked = state.region === r;
+    // 고른 지역은 게시물이 없어도 지역색으로 칠한다
+    el.style.setProperty('--c', REGION[r].color);
+    el.setAttribute('fill', has || picked ? REGION[r].color : 'var(--land)');
+    el.setAttribute('fill-opacity', picked ? 0.85 : state.region ? (has ? 0.2 : 1) : has ? 0.4 : 1);
+    el.classList.toggle('picked', picked);
   });
   app.querySelectorAll('.map .tag').forEach((el) => el.setAttribute('aria-pressed', String(el.dataset.region === state.region)));
 }
