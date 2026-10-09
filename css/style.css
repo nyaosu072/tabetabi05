@@ -59,7 +59,7 @@ h1, h2 { font-weight: 400; }
 .empty { padding: 32px 28px; border: 1.5px dashed var(--rule); border-radius: 16px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
 .empty b { font-size: 18px; }
 .empty p { margin: 0; color: var(--pencil); }
-.notice { margin: 0; padding: 16px 20px; border-left: 3px solid var(--ink); background: var(--sheet); }
+.notice { margin: 0; padding: 16px 20px; border: 1px solid var(--rule); border-radius: 12px; background: var(--sheet); }
 .region { display: inline-flex; align-items: center; gap: 8px; }
 .region::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--c); flex: none; }
 
@@ -82,7 +82,7 @@ h1, h2 { font-weight: 400; }
   transform: translateX(calc(-100% - 48px)); transition: transform .34s cubic-bezier(.2, .8, .2, 1); }
 .stage.open .drawer { transform: none; }
 .stage.open .intro { opacity: 0; transform: translateX(-24px); pointer-events: none; }
-.drawer-head { position: sticky; top: 0; z-index: 1; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 22px 16px 14px 24px; background: var(--sheet); border-top: 8px solid var(--rc); }
+.drawer-head { position: sticky; top: 0; z-index: 1; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 22px 16px 14px 24px; background: color-mix(in srgb, var(--rc) 12%, var(--sheet)); }
 .drawer-head h2 { margin: 0; font-family: var(--display); font-size: 34px; line-height: 1.15; display: flex; align-items: baseline; gap: 10px; }
 .drawer-head h2:focus { outline: none; }
 .drawer-head h2:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; border-radius: 4px; }
@@ -95,14 +95,15 @@ h1, h2 { font-weight: 400; }
 .drawer .more { align-self: flex-start; margin: 8px 24px 24px; padding: 10px 0; border: 0; background: none; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
 
 /* 지역 이름표: 소개한 지역은 지역색으로 칠하고, 아직인 지역은 흰 바탕 */
-.map .tag { position: absolute; transform: translate(-50%, -50%); min-height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--rule); background: rgba(255, 255, 255, .92); color: var(--pencil); display: flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 14px; line-height: 1; transition: background .15s, border-color .15s, color .15s; }
+.map .tag { position: absolute; transform: translate(-50%, -50%); min-height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--rule); background: rgba(255, 255, 255, .92); color: var(--pencil); display: flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 14px; line-height: 1; transition: background .15s, border-color .15s, color .15s, transform .15s; }
 .map .tag b { font-weight: 700; }
 .map .tag .jp { font-size: 12px; font-weight: 500; opacity: .7; }
 .map .tag small { min-width: 22px; height: 22px; padding: 0 6px; margin-right: -6px; border-radius: 999px; background: #fff; color: var(--c); font-size: 12px; font-weight: 800; display: grid; place-items: center; }
 .map .tag:hover { border-color: var(--ink); color: var(--ink); }
-.map .tag.on { --h: 48px; min-height: var(--h); padding: 0 16px 0 18px; border-color: var(--c); background: var(--c); color: #fff; font-size: 16px; box-shadow: 0 8px 20px -10px var(--c); }
+.map .tag.hover { transform: translate(-50%, -50%) scale(1.2); z-index: 2; }
+.map .tag.on { border-color: var(--c); background: var(--c); color: #fff; box-shadow: 0 8px 20px -10px var(--c); }
 .map .tag.on b { font-weight: 800; }
-.map .tag.on .jp { opacity: .85; font-size: 13px; }
+.map .tag.on .jp { opacity: .85; }
 .map .tag.on:hover { color: #fff; filter: brightness(1.08); }
 .map .tag[aria-pressed="true"] { border-color: var(--c); color: #fff; background: var(--c); box-shadow: 0 0 0 3px var(--sea), 0 0 0 5px var(--ink); }
 .map .tag.on[aria-pressed="true"] { color: #fff; background: var(--c); box-shadow: 0 0 0 3px var(--sea), 0 0 0 5px var(--ink); }
@@ -123,7 +124,6 @@ h1, h2 { font-weight: 400; }
 }
 @media (max-width: 600px) {
   .map .tag { min-height: 28px; padding: 0 9px; font-size: 11px; gap: 4px; }
-  .map .tag.on { --h: 32px; padding: 0 10px 0 11px; font-size: 12px; }
   .map .tag .jp { display: none; }
   .map .tag small { min-width: 18px; height: 18px; font-size: 10.5px; margin-right: -5px; }
 }
@@ -213,7 +213,7 @@ table.list small { display: block; margin-top: 2px; font-size: 13px; color: var(
 .sign h1 { margin: 6px 0 0; padding: 0 28px; font-family: var(--display); font-size: clamp(32px, 4.4vw, 48px); line-height: 1.18; }
 .sign .food { margin: 12px 0 0; padding: 0 28px 22px; color: var(--pencil); display: flex; flex-wrap: wrap; gap: 0 12px; }
 .sign .food .jp { font-weight: 700; color: var(--ink); }
-.neighbors { border-top: 8px solid var(--rc); display: flex; justify-content: space-between; gap: 12px; padding: 10px 16px; }
+.neighbors { background: color-mix(in srgb, var(--rc) 12%, transparent); display: flex; justify-content: space-between; gap: 12px; padding: 10px 16px; }
 .neighbors a { display: flex; align-items: center; gap: 6px; min-height: 48px; padding: 0 8px; border-radius: 8px; text-decoration: none; font-weight: 800; }
 .neighbors a:hover { background: var(--paper); }
 .neighbors span { display: flex; flex-direction: column; line-height: 1.25; }
@@ -257,5 +257,5 @@ table.list small { display: block; margin-top: 2px; font-size: 13px; color: var(
 .badge.draft { color: var(--pencil); }
 .badge.wait { color: var(--wait); }
 .badge.live { color: var(--ok); }
-.msg { padding: 12px 16px; border-left: 3px solid var(--ink); background: var(--sheet); }
+.msg { padding: 12px 16px; border: 1px solid var(--rule); border-radius: 12px; background: var(--sheet); }
 .msg.err { border-left-color: var(--danger); color: var(--danger); }

@@ -78,8 +78,8 @@ function renderMap() {
 
   app.querySelectorAll('.map [data-region]').forEach((el) => {
     el.addEventListener('click', () => selectRegion(state.region === el.dataset.region ? null : el.dataset.region));
-    // 지역(도도부현 여러 개)이나 이름표에 마우스를 올리면 그 지역 전체가 지역색으로 비친다
-    const hover = (on) => app.querySelectorAll(`.map path[data-region="${el.dataset.region}"]`).forEach((p) => p.classList.toggle('hover', on));
+    // 지역(도도부현 여러 개)이나 이름표에 마우스를 올리면 그 지역 전체가 지역색으로 비치고 이름표가 커진다
+    const hover = (on) => app.querySelectorAll(`.map [data-region="${el.dataset.region}"]`).forEach((p) => p.classList.toggle('hover', on));
     el.addEventListener('mouseenter', () => hover(true));
     el.addEventListener('mouseleave', () => hover(false));
   });
