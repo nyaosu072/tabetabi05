@@ -1,15 +1,15 @@
 import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js';
 
 export const REGIONS = [
-  { id: 'hokkaido', label: '홋카이도', jp: '北海道', color: '#2f6f9f', x: 76, y: 17 },
-  { id: 'tohoku',   label: '도호쿠',   jp: '東北',   color: '#4f8a3c', x: 86, y: 40 },
-  { id: 'kanto',    label: '간토',     jp: '関東',   color: '#c8553d', x: 84, y: 64 },
-  { id: 'chubu',    label: '주부',     jp: '中部',   color: '#b9832b', x: 53, y: 57 },
-  { id: 'kansai',   label: '간사이',   jp: '関西',   color: '#8e3b62', x: 47, y: 72 },
-  { id: 'chugoku',  label: '주고쿠',   jp: '中国',   color: '#a3462f', x: 23, y: 66 },
-  { id: 'shikoku',  label: '시코쿠',   jp: '四国',   color: '#2e8a83', x: 34, y: 89 },
-  { id: 'kyushu',   label: '규슈',     jp: '九州',   color: '#c2412d', x: 11, y: 82 },
-  { id: 'okinawa',  label: '오키나와', jp: '沖縄',   color: '#1f8fb3', x: 20, y: 39 }
+  { id: 'hokkaido', label: '홋카이도', jp: '北海道', color: '#2f6f9f', x: 77, y: 17 },
+  { id: 'tohoku',   label: '도호쿠',   jp: '東北',   color: '#4f8a3c', x: 68, y: 44 },
+  { id: 'kanto',    label: '간토',     jp: '関東',   color: '#c8553d', x: 75, y: 72 },
+  { id: 'chubu',    label: '주부',     jp: '中部',   color: '#b9832b', x: 53, y: 58 },
+  { id: 'kansai',   label: '간사이',   jp: '関西',   color: '#8e3b62', x: 46, y: 77 },
+  { id: 'chugoku',  label: '주고쿠',   jp: '中国',   color: '#a3462f', x: 24, y: 67 },
+  { id: 'shikoku',  label: '시코쿠',   jp: '四国',   color: '#2e8a83', x: 35, y: 87 },
+  { id: 'kyushu',   label: '규슈',     jp: '九州',   color: '#c2412d', x: 11, y: 94 },
+  { id: 'okinawa',  label: '오키나와', jp: '沖縄',   color: '#1f8fb3', x: 21, y: 20 }
 ];
 export const REGION = Object.fromEntries(REGIONS.map((r) => [r.id, r]));
 
