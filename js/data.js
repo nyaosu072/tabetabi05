@@ -2,7 +2,7 @@ import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js';
 
 export const REGIONS = [
   { id: 'hokkaido', label: '홋카이도', jp: '北海道', color: '#2f6f9f', x: 86.1, y: 31.9 },
-  { id: 'tohoku',   label: '도호쿠',   jp: '東北',   color: '#4f8a3c', x: 49.5, y: 40.2 },
+  { id: 'tohoku',   label: '도호쿠',   jp: '東北',   color: '#4f8a3c', x: 86, y: 46 },
   { id: 'kanto',    label: '간토',     jp: '関東',   color: '#c8553d', x: 71.9, y: 76.3 },
   { id: 'chubu',    label: '주부',     jp: '中部',   color: '#b9832b', x: 45.5, y: 49.2 },
   { id: 'kansai',   label: '간사이',   jp: '関西',   color: '#8e3b62', x: 54.5, y: 88.1 },
