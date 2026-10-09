@@ -53,13 +53,13 @@ function renderMap() {
           <h1>지도로 고르는<br>일본 지역 음식</h1>
           <p>지금까지 9개 지역 중 <b>${visited}곳</b>의 음식을 소개했어요. 지역을 누르면 그곳 음식 카드뉴스가 나와요.</p>
         </div>
-        <div class="map">
+        <div class="map"><div class="map-in">
           <svg viewBox="0 0 640 640" role="img" aria-label="일본 지도. 지역 이름 버튼으로 고를 수 있어요">
             <rect x="20" y="26" width="244" height="194" rx="10" fill="none" stroke="var(--rule)" stroke-width="1.2" stroke-dasharray="4 5"/>
             ${paths}
           </svg>
           ${labels}
-        </div>
+        </div></div>
         <aside id="drawer" class="drawer" aria-label="지역 게시물" hidden></aside>
       </div>
     </section>
